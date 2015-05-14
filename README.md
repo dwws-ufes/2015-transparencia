@@ -1,11 +1,13 @@
+#Projeto Transparência
 Olá!
 
 Para implantar este projeto, você vai precisar:
-	1 - Muita vontade de fazer deste mundo um lugar melhor. E a Transparência ajuda nisso;
-	2 - Java 8;
-	3 - Eclipse Luna 4.4;
-	4 - Wildfly 8.1;
-	5 - MySql Workbench 6.2;
+	1. Muita vontade de fazer deste mundo um lugar melhor. E a Transparência ajuda nisso;
+	2. Java 8;
+	3. Eclipse Luna 4.4;
+	4. Wildfly 8.1;
+	5. MySql Workbench 6.2;
+
 Obs.: Essas foram as versões que utilizamos e funcionou. Pode ser que outras versões da mesma ferramenta (ou até outras ferramentas) funcionem também :)
 
 Feito o mise en place, você deverá configurar as ferramentas. Para isso tem um tutorial muito bom aqui: https://github.com/nemo-ufes/nemo-utils/wiki
