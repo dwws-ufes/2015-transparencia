@@ -1,0 +1,74 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/resources/templates/default/decorator.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="#{msgs['manageOrgaos.title.create']}" rendered="#{(! manageOrgaosController.readOnly) and (manageOrgaosController.selectedEntity.id == null)}" />
+        <h:outputText value="#{msgs['manageOrgaos.title.update']}" rendered="#{(! manageOrgaosController.readOnly) and (manageOrgaosController.selectedEntity.id != null)}" />
+        <h:outputText value="#{msgs['manageOrgaos.title.retrieve']}" rendered="#{manageOrgaosController.readOnly}" />
+    </ui:define>
+
+    <ui:define name="body">
+        <h1>
+            <h:outputText value="#{msgs['manageOrgaos.title.create']}" rendered="#{(! manageOrgaosController.readOnly) and (manageOrgaosController.selectedEntity.id == null)}" />
+            <h:outputText value="#{msgs['manageOrgaos.title.update']}" rendered="#{(! manageOrgaosController.readOnly) and (manageOrgaosController.selectedEntity.id != null)}" />
+            <h:outputText value="#{msgs['manageOrgaos.title.retrieve']}" rendered="#{manageOrgaosController.readOnly}" />
+        </h1>
+
+        <div class="crud">
+            <ui:decorate template="/resources/templates/default/form.xhtml">
+                <h:form id="form">
+                    <p:hotkey bind="#{msgs['crud.hotkey.focusFirstField']}" handler="findObjectById('form:id').focus();" />
+                     
+                    <h:panelGroup id="strNomeOrgaoField">
+                        <ui:decorate template="/resources/templates/default/formfield.xhtml">
+                            <ui:param name="fieldName" value="form:strNomeOrgao" />
+                            <ui:param name="tooltip" value="#{msgs['manageOrgaos.form.strNomeOrgao.tooltip']}" />
+                            <ui:define name="label"><h:outputText value="Nome" /></ui:define>
+                            <p:inputText id="strNomeOrgao" value="#{manageOrgaosController.selectedEntity.strNomeOrgao}" size="50" required="true" disabled="#{manageOrgaosController.readOnly}">
+                                <p:ajax event="blur" update="strNomeOrgaoField" />
+                            </p:inputText>
+                        </ui:decorate>
+                    </h:panelGroup>
+
+                    <h:panelGroup id="strSiglaField">
+                        <ui:decorate template="/resources/templates/default/formfield.xhtml">
+                            <ui:param name="fieldName" value="form:strSigla" />
+                            <ui:param name="tooltip" value="#{msgs['manageOrgaos.form.strSigla.tooltip']}" />
+                            <ui:define name="label"><h:outputText value="Sigla" /></ui:define>
+                            <p:inputText id="strSigla" value="#{manageOrgaosController.selectedEntity.strSigla}" size="20" required="true" disabled="#{manageOrgaosController.readOnly}">
+                                <p:ajax event="blur" update="strSiglaField" />
+                            </p:inputText>
+                        </ui:decorate>
+                    </h:panelGroup>                    
+
+                    <ui:decorate template="/resources/templates/default/formbutton.xhtml">
+                        <h:panelGroup rendered="#{! manageOrgaosController.readOnly}">
+                            <p:commandButton action="#{manageOrgaosController.list}" value="#{msgs['crud.button.cancel']}" immediate="true" icon="buttonCancel" />
+                            <p:commandButton action="#{manageOrgaosController.save}" value="#{msgs['crud.button.save']}" icon="buttonOk" update=":form :globalMessages" />
+                            <p:hotkey bind="#{msgs['crud.hotkey.backToList']}" action="#{manageOrgaosController.list}" immediate="true" />
+                            <p:hotkey bind="#{msgs['crud.hotkey.save']}" action="#{manageOrgaosController.save}" update=":form :globalMessages" />
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{manageOrgaosController.readOnly}">
+                            <p:commandButton action="#{manageOrgaosController.list}" value="#{msgs['crud.button.back']}" immediate="true" icon="buttonBack" />
+                            <p:hotkey bind="#{msgs['crud.hotkey.backToList']}" action="#{manageOrgaosController.list}" immediate="true" />
+                        </h:panelGroup>
+                    </ui:decorate>
+                </h:form>
+            </ui:decorate>
+        </div>
+    </ui:define>
+
+    <ui:define name="help">
+        <h4><h:outputText value="#{msgs['text.hotkeys']}" />:</h4>
+        <ul>
+            <li><b><h:outputText value="#{msgs['crud.hotkey.focusFirstField']}" /></b>: <h:outputText value="#{msgs['crud.help.hotkeys.focusFirstField']}" />;</li>
+            <li><b><h:outputText value="#{msgs['crud.hotkey.backToList']}" /></b>: <h:outputText value="#{msgs['crud.help.hotkeys.backToList']}" />;</li>
+            <li><b><h:outputText value="#{msgs['crud.hotkey.save']}" /></b>: <h:outputText value="#{msgs['crud.help.hotkeys.save']}" />.</li>
+        </ul>
+    </ui:define>
+</ui:composition>

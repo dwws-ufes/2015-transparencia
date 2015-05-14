@@ -1,0 +1,112 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/resources/templates/default/decorator.xhtml">
+
+    <ui:define name="title"><h:outputText value="#{msgs['manageElementoDespesas.title']}" /></ui:define>
+
+    <ui:define name="body">
+        <h1><h:outputText value="#{msgs['manageElementoDespesas.title']}" /></h1>
+
+        <div class="crud">
+            <!-- Filter bar: used to filter the listing (displayed when there is at least one filter available). -->
+            <h:form id="filterForm">
+                <h:panelGroup id="filterBar" rendered="#{(not empty manageElementoDespesasController.filters)}">
+                    <div class="crudFilterBar">
+                        <h:outputText value="#{msgs['crud.text.filter']} " />
+                        <p:selectOneMenu id="filter" required="true" value="#{manageElementoDespesasController.filterKey}">
+                            <f:selectItems value="#{manageElementoDespesasController.filters}" var="filter" itemLabel="#{filter.label}" itemValue="#{filter.key}" />
+                            <f:ajax event="change" execute="@form" listener="#{manageElementoDespesasController.changeFilter}" render="@form :listingForm :buttonsForm" />
+                        </p:selectOneMenu>
+                        <h:outputText value=": " />
+                        <p:inputText id="filterText" size="20" required="false" value="#{manageElementoDespesasController.filterParam}" rendered="#{manageElementoDespesasController.filter.options == null}" />
+                        <p:selectOneMenu id="filterSelect" required="false" value="#{manageElementoDespesasController.filterParam}" rendered="#{manageElementoDespesasController.filter.options != null}">
+                            <f:selectItems value="#{manageElementoDespesasController.filter.reversedOptionsLabels}" />
+                        </p:selectOneMenu>
+                        <p:commandLink action="#{manageElementoDespesasController.filter}" process="@form" update=":listingForm :buttonsForm">
+                            <h:graphicImage style="border: 0;" value="/resources/templates/default/icons/button-find.png" title="#{msgs['crud.button.filter']}" />
+                        </p:commandLink>
+                        <p:hotkey bind="#{msgs['crud.hotkey.filterFocus']}" handler="if (findObjectById('filterForm:filterText') != null) findObjectById('filterForm:filterText').focus(); else findObjectById('filterForm:filterSelect').focus();" />
+                    </div>
+                </h:panelGroup>
+            </h:form>
+
+            <!-- The listing form. -->
+            <h:form id="listingForm">
+                <!-- Filter information (displayed when the listing is being filtered. -->
+                <h:panelGroup id="filterInfo" rendered="#{manageElementoDespesasController.filtering}">
+                    <div class="crudFilterInfo">
+                        <h:outputFormat value="#{msgs['crud.text.filterInfo']} ">
+                            <f:param value="#{manageElementoDespesasController.filter.label}" />
+                            <f:param value="#{manageElementoDespesasController.filterLabel}" />
+                        </h:outputFormat>
+                        <p:commandLink action="#{manageElementoDespesasController.cancelFilter}" process="@form" update="@form :buttonsForm">
+                            <h:graphicImage style="border: 0;" value="/resources/templates/default/icons/button-close.png" title="#{msgs['crud.button.cancelFilter']}" />
+                        </p:commandLink>
+                        <p:hotkey bind="#{msgs['crud.hotkey.clearFilter']}" action="#{manageElementoDespesasController.cancelFilter}" process="@form" update=":listingForm :buttonsForm" />
+                    </div>
+                </h:panelGroup>
+
+                <!-- The list of entities. -->
+                <h:panelGroup id="listing" styleClass="listing">
+                    <p:dataTable
+                        widgetVar="listingTable"
+                        value="#{manageElementoDespesasController.lazyEntities}" 
+                        var="entity" 
+                        rows="#{manageElementoDespesasController.maxDataTableRowsPerPage}" 
+                        rowsPerPageTemplate="#{manageElementoDespesasController.halfMaxDataTableRowsPerPage},#{manageElementoDespesasController.maxDataTableRowsPerPage},#{manageElementoDespesasController.doubleMaxDataTableRowsPerPage}"
+                        lazy="true" 
+                        paginator="true" 
+                        selection="#{manageElementoDespesasController.selectedEntity}" 
+                        selectionMode="single" 
+                        paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+                        paginatorPosition="bottom" 
+                        loadingMessage="#{msgs['text.ajax.loading']}" 
+                        emptyMessage="#{manageElementoDespesasController.filtering ? msgs['manageElementoDespesas.text.noEntitiesFiltered'] : msgs['manageElementoDespesas.text.noEntities']}">
+
+                        <p:column headerText="Código">
+                            <h:outputText value="#{entity.codElementoDespesa}" />
+                        </p:column>
+                        <p:column headerText="Descrição">
+                            <h:outputText value="#{entity.strElementoDespesa}" />
+                        </p:column>
+
+                        <p:ajax event="rowSelect" update=":buttonsForm" />
+                    </p:dataTable>
+                    <p:hotkey bind="ctrl+left" handler="goToFirstPage(listingTable);" />
+                    <p:hotkey bind="left" handler="goToPreviousPage(listingTable);" />
+                    <p:hotkey bind="right" handler="goToNextPage(listingTable);" />
+                    <p:hotkey bind="ctrl+right" handler="goToLastPage(listingTable);" />
+                </h:panelGroup>
+            </h:form>
+
+            <!-- Buttons shown below the listing. -->
+            <h:form id="buttonsForm">
+                <div class="crudButtons">
+                    <p:commandButton action="#{manageElementoDespesasController.retrieve}" value="#{msgs['crud.button.retrieve']}" icon="buttonView" disabled="#{manageElementoDespesasController.selectedEntity == null}" />
+                    <p:commandButton action="#{manageElementoDespesasController.update}" value="#{msgs['crud.button.update']}" icon="buttonEdit" disabled="#{manageElementoDespesasController.selectedEntity == null}" />
+                    <p:hotkey bind="#{msgs['crud.hotkey.retrieve']}" action="#{manageElementoDespesasController.retrieve}" rendered="#{manageElementoDespesasController.selectedEntity != null}" />
+                    <p:hotkey bind="#{msgs['crud.hotkey.update']}" action="#{manageElementoDespesasController.update}" rendered="#{manageElementoDespesasController.selectedEntity != null}" />
+                </div>
+            </h:form>
+        </div>
+
+        <p>&nbsp;</p>
+
+    </ui:define>
+
+    <ui:define name="help">
+        <h4><h:outputText value="#{msgs['text.hotkeys']}" />:</h4>
+        <ul>
+            <li><b><h:outputText value="#{msgs['crud.hotkey.filterFocus']}" /></b>: <h:outputText value="#{msgs['crud.help.hotkeys.filterFocus']}" />;</li>
+            <li><b><h:outputText value="#{msgs['crud.hotkey.clearFilter']}" /></b>: <h:outputText value="#{msgs['crud.help.hotkeys.clearFilter']}" />;</li>
+            <li><b><h:outputText value="#{msgs['crud.hotkey.retrieve']}" /></b>: <h:outputText value="#{msgs['crud.help.hotkeys.retrieve']}" />;</li>
+            <li><b><h:outputText value="#{msgs['crud.hotkey.update']}" /></b>: <h:outputText value="#{msgs['crud.help.hotkeys.update']}" />;</li>
+            <li><b><h:outputText value="#{msgs['crud.hotkey.cancelDeletion']}" /></b>: <h:outputText value="#{msgs['crud.help.hotkeys.cancelDeletion']}" />;</li>
+            <li><b><h:outputText value="#{msgs['crud.hotkey.confirmDeletion']}" /></b>: <h:outputText value="#{msgs['crud.help.hotkeys.confirmDeletion']}" />.</li>
+        </ul>
+    </ui:define>
+</ui:composition>

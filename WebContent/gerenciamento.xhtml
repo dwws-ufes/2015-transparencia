@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/resources/templates/default/decorator.xhtml">
+
+    <ui:define name="title"><h:outputText value="#{msgs['title.home']}" /></ui:define>
+
+    <ui:define name="body">
+        <h2><h:outputText value="#{msgs['title.home']}" /></h2>		
+		<div id="links">
+			<ul>
+                <li><h:link outcome="CadastroOrgao/list" value="Órgão" /></li>
+	            <li><h:link outcome="CadastroElementoDespesa/list" value="Elemento de Despesa" /></li>
+	            <li><h:link outcome="CadastroSubElementoDespesa/list" value="Subelemento de Despesa" /></li>
+			</ul>
+		</div>
+    </ui:define>
+</ui:composition>

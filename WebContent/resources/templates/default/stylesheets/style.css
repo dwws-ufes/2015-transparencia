@@ -1,0 +1,302 @@
+
+/*
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+*/
+
+
+#botoes {
+	float: none;
+	width: 600px;
+	height: 300px;
+	margin: 0 auto;
+	padding: 5px 5px;
+}
+#botoes ul {
+	float: right;
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#botoes li {
+	float: left;
+}
+
+#botoes a {
+	display: block;
+	line-height: 100px;
+	margin-right: 1px;
+	padding: 0px 20px 0px 20px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px rgba(0,0,0,.2);
+	text-transform: uppercase;
+	font-family: 'Abel', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	color: #FFFFFF;
+	border: none;
+}
+
+
+.imgBox1 { 
+	height: 300px; 
+	width: 50 px;
+	background: url(../../../../resources/templates/default/images/btn1.png) no-repeat;
+	background-size: 40%; 
+} 
+
+.imgBox1:hover { 
+	box-shadow: 0 0 5px #ccc; 
+} 
+
+.imgBox2 { 
+	height: 300px;
+	width: 50 px; 
+	background: url(../../../../resources/templates/default/images/btn2.png) no-repeat;
+	background-size: 40%; 
+} 
+
+.imgBox2:hover { 
+	box-shadow: 0 0 5px #ccc; 
+} 
+
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #ffffff url(../../../../resources/templates/default/images/img01.jpg) repeat;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #4a4aff;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-family: 'Abel', sans-serif;
+	color: #0080c0;
+}
+
+h1 {
+	font-size: 1.8em;
+}
+
+h2 {
+	font-size: 2.8em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #0000a0;
+}
+
+a:hover {
+}
+
+
+
+#wrapper {
+	padding-top: 50px;
+}
+
+.container {
+	width: 1000px;
+	margin: 0px auto;
+}
+
+/* Header */
+
+#header-wrapper {
+	overflow: hidden;
+	height: 140px;
+	border-radius: 10px;
+}
+
+#header {
+	width: 900px;
+	height: 100px;
+	margin: 0 auto;
+	padding: 0px 50px;
+	background: url(../../../../resources/templates/default/images/img02.jpg) repeat;
+	opacity: 0.85;
+	border-radius: 10px;
+}
+
+/* Logo */
+
+#logo {
+	float: left;
+	width: 300px;
+	margin: 0;
+	padding: 0;
+	color: #FFFFFF;
+}
+
+#logo h1, #logo p {
+}
+
+#logo h1 {
+	line-height: 100px;
+	letter-spacing: -2px;
+	text-transform: lowercase;
+	font-size: 3.8em;
+}
+
+#logo h1 a {
+	color: #FFFFFF;
+	text-shadow: 1px 1px 0px rgba(0,0,0,.2);
+}
+
+#logo p {
+	margin: 0;
+	padding: 0px 0 0 0px;
+	letter-spacing: -1px;
+	font: normal 18px Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	color: #8E8E8E;
+}
+
+#logo p a {
+	color: #8E8E8E;
+}
+
+#logo a {
+	border: none;
+	background: none;
+	text-decoration: none;
+	color: #000000;
+}
+
+/* Menu */
+
+#menu {
+	float: right;
+	width: 500px;
+	height: 90px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#menu ul {
+	float: right;
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+}
+
+#menu a {
+	display: block;
+	line-height: 100px;
+	margin-right: 1px;
+	padding: 0px 20px 0px 20px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px rgba(0,0,0,.2);
+	text-transform: uppercase;
+	font-family: 'Abel', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	color: #FFFFFF;
+	border: none;
+}
+
+#menu a:hover, #menu .current_page_item a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#menu .current_page_item a {
+}
+
+/* Page */
+
+#page {
+	width: 900px;
+	margin: 0 auto;
+	padding: 20px 20px;
+	background: #FFFFFF;
+	opacity: 0.85;
+	border-radius: 10px;
+}
+
+/* Content */
+
+#content {
+	float: left;
+	width: 900px;
+	padding: 10px 0px 0px 0px;
+}
+
+/* Footer */
+
+#footer-content {
+	color: #D6E2F0;
+}
+
+#footer-content a {
+	color: #92A9B6;
+}
+
+#footer-content h2 {
+	margin: 0px;
+	padding: 0px 0px 20px 0px;
+	letter-spacing: -1px;
+	text-transform: lowercase;
+	font-size: 26px;
+	color: #FFFFFF;
+}
+
+#footer-content ul {
+	margin: 0px;
+	padding: 0px 0px 0px 20px;
+}
+
+#footer-content a {
+}
+
+#footer {
+	height: 100px;
+	margin: 0 auto;
+	padding: 0px 0 15px 0;
+	font-family: 'Abel', sans-serif;
+}
+
+#footer p {
+	margin: 0;
+	padding-top: 10px;
+	letter-spacing: 1px;
+	line-height: normal;
+	font-size: 14px;
+	text-transform: uppercase;
+	text-align: center;
+	color: #004284;
+}
+
+#footer a {
+	color: #004284;
+	font-weight: bolder;
+}
+

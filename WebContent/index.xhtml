@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/resources/templates/default/decorator.xhtml">
+
+    <ui:define name="title"><h:outputText value="#{msgs['title.home']}" /></ui:define>
+
+    <ui:define name="body">
+        <h2><h:outputText value="#{msgs['title.home']}" /></h2>
+        <h1>Vamos acompanhar de perto a aplicação do dinheiro dos nossos impostos?</h1>
+        <p>Este site mostra o que o Governo do Estado do Espírito Santo está fazendo com o nosso dinheiro. Navegue pelas consultas disponibilizadas e fiscalize o Poder Público.</p>
+
+        
+        <div id="botoes">
+            <ul>
+                <li><a href="#{facesContext.externalContext.requestContextPath}/Despesas/bar.faces#"><img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/images/btn1.png" height="300" title="Por Orgao" alt="Por Orgao" /></a></li>
+                <li><a href="#"><img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/images/btn2.png" height="300" title="Por Fornecedor" alt="Por Fornecedor" /></a></li>
+            </ul>
+        </div>
+        
+        <h1>Origem dos Dados</h1>
+        <p>Os dados divulgados aqui foram baixados do <a href="http://www.transparencia.es.gov.br" target="_blank">Portal da Transparência do Governo do Estado do Espírito Santo</a>, e se referem às despesas realizadas no ano de 2014.</p>
+        <p>Alguns dados baixados do Portal foram excluídos porque não atendiam os requisitos de integridade referencial deste projeto. Outros foram excluídos por apresentarem valores nulos por se referirem a informações protegidas por sigilo.</p>
+    </ui:define>
+</ui:composition>
