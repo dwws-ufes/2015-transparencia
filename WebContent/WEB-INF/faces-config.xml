@@ -18,7 +18,7 @@
 	    <!-- Defines the default locale. -->
 	    <locale-config>
 	        <default-locale>en-US</default-locale>
-	    </locale-config>
+            <supported-locale>pt-BR</supported-locale>
+	    </locale-config>	    
     </application>
-
 </faces-config>

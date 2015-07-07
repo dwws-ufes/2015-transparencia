@@ -1,0 +1,22 @@
+SELECT DISTINCT ?name ?lat ?long ?pop
+WHERE 
+{
+    {
+       ?city rdfs:label ?name ;
+	     dbpedia-owl:populationTotal ?pop ;
+             dbpedia-owl:isPartOf <http://dbpedia.org/resource/Esp%C3%ADrito_Santo> ;
+             geo:lat ?lat ;
+             geo:long ?long.
+             FILTER (langMatches(lang(?name), "EN")) .
+    }
+UNION
+    {
+       ?city rdfs:label ?name ;
+	     dbpedia-owl:populationTotal ?pop ;
+             rdf:type <http://dbpedia.org/class/yago/PopulatedPlacesInEsp%C3%ADritoSanto> ;
+             geo:lat ?lat ;
+             geo:long ?long.
+             FILTER (langMatches(lang(?name), "EN")) .
+    }
+}
+ORDER BY ?name

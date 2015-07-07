@@ -1,0 +1,56 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/resources/templates/default/decorator.xhtml">
+    <ui:define name="title">
+        <h:outputText value="Investimentos do Governo do Estado nos Municípios" />
+    </ui:define>
+    <ui:define name="body">
+        <h2 style="text-align:center;">
+            <h:outputText value="Investimentos do Governo do Estado nos Municípios" />
+        </h2>
+        <br /><br />
+        <script src="http://maps.google.com/maps/api/js?sensor=false"
+        type="text/javascript"></script>        
+        <p>
+            <a style="float: right;" target="_blank"
+                href="#{facesContext.externalContext.requestContextPath}/dados/municipios">
+                RDF/XML (referências) para os municípios</a>
+        </p>
+        <br /><br />
+        <h:form>    
+            <p:gmap id="gmap" center="-20.29048,-40.28808" zoom="7" type="HYBRID" 
+                model="#{manageViewInvestimentosController.simpleModel}"
+                style="width:100%;height:80%">          
+                <p:ajax event="overlaySelect" listener="#{manageViewInvestimentosController.onMarkerSelect}" />         
+                <p:gmapInfoWindow id="infoWindow">
+                    <p:outputPanel style="text-align: center; display: block; margin: auto">	                    
+                        <h3 style="text-align:center;">
+                            <h:outputText id="municipio" 
+                                value="#{manageViewInvestimentosController.investimento.getMunicipio()}" />
+                        </h3>
+		                 <p>Total Investimentos:
+		                     <h:outputText id="investimento" 
+		                        value="#{manageViewInvestimentosController.investimento.getTotalDeInvestimentos()}" />
+		                 </p>
+		                 <p>Total População:
+		                     <h:outputText id="populacao" 
+		                         value="#{manageViewInvestimentosController.investimento.getTotalPopulacao()}" />
+		                 </p>
+		                 <p>Investimentos per capita:
+		                     <h:outputText id="investpercapita" 
+		                         value="#{manageViewInvestimentosController.investimento.getTotalDeInvestimentosPerCapita()}" />
+		                 </p>
+		                 <p>
+		                     <a style="float: right;" target="_blank"
+		                         href="#{facesContext.externalContext.requestContextPath}/dados/municipios#{manageViewInvestimentosController.investimento.getUrl()}">RDF/XML</a>
+		                 </p>
+                    </p:outputPanel>
+                </p:gmapInfoWindow>
+            </p:gmap>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -14,8 +14,6 @@ import javax.persistence.TypedQuery;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
-import org.primefaces.model.chart.BubbleChartModel;
-import org.primefaces.model.chart.BubbleChartSeries;
 import org.primefaces.model.chart.ChartSeries;
 
 import br.ufes.inf.nemo.transparencia.application.ManageViewPagamentosService;
@@ -38,8 +36,6 @@ public class ManageViewPagamentosController  extends JSFController implements Se
 	@PersistenceContext
 	private EntityManager entityManager;	
 	
-	private List<ViewPagamentos> despesas;
-
 	public List<ViewPagamentos> getDespesas() {			
 	
 		// Monta a view com a soma das despesas por órgão
@@ -53,10 +49,6 @@ public class ManageViewPagamentosController  extends JSFController implements Se
 		List<ViewPagamentos> result = query.setMaxResults(10).getResultList();
 		return result;
 	}
-
-	public void setDespesas(List<ViewPagamentos> despesas) {
-		this.despesas = despesas;
-	}	
 
     @PostConstruct
     public void init() {

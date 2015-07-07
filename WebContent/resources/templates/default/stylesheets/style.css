@@ -7,14 +7,14 @@ Released for free under the Creative Commons Attribution License
 
 
 #botoes {
-	float: none;
-	width: 600px;
+	float: left;
+	width: 800px;
 	height: 300px;
 	margin: 0 auto;
-	padding: 5px 5px;
+	padding: 0px 0px;
 }
 #botoes ul {
-	float: right;
+	float: left;
 	margin: 0;
 	padding: 0px 0px 0px 0px;
 	list-style: none;
@@ -27,9 +27,9 @@ Released for free under the Creative Commons Attribution License
 
 #botoes a {
 	display: block;
-	line-height: 100px;
+	line-height: 10px;
 	margin-right: 1px;
-	padding: 0px 20px 0px 20px;
+	padding: 0px 0px 0px 20px;
 	text-decoration: none;
 	text-align: center;
 	text-shadow: 1px 1px 0px rgba(0,0,0,.2);
@@ -131,7 +131,7 @@ a:hover {
 }
 
 #header {
-	width: 900px;
+	width: 950px;
 	height: 100px;
 	margin: 0 auto;
 	padding: 0px 50px;
@@ -211,7 +211,7 @@ a:hover {
 	display: block;
 	line-height: 100px;
 	margin-right: 1px;
-	padding: 0px 20px 0px 20px;
+	padding: 0px 0px 0px 20px;
 	text-decoration: none;
 	text-align: center;
 	text-shadow: 1px 1px 0px rgba(0,0,0,.2);
@@ -234,7 +234,7 @@ a:hover {
 /* Page */
 
 #page {
-	width: 900px;
+	width: 950px;
 	margin: 0 auto;
 	padding: 20px 20px;
 	background: #FFFFFF;

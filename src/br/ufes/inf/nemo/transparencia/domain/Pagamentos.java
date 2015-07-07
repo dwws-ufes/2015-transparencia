@@ -64,6 +64,20 @@ public class Pagamentos extends PersistentObjectSupport implements Comparable<Pa
 	@Column(name = "num_DocumentoEmpenhado", length = 50)
 	private String numDocumentoEmpenhado;
 
+	
+	// Construtores	
+	public Pagamentos(){
+		
+	}
+	
+	public Pagamentos(Long id, String strNomeFavorecido, Float valValorRepasse, Date datEmissaoOrdemBancaria ){
+		super.setId(id);
+		this.strNomeFavorecido = strNomeFavorecido;
+		this.valValorRepasse = valValorRepasse;
+		this.datEmissaoOrdemBancaria = datEmissaoOrdemBancaria;
+	}
+	
+
 	public Orgao getOrgao() {
 		return this.orgao;
 	}

@@ -13,6 +13,10 @@ Released under a Creative Commons Attribution 3.0 Unported (https://creativecomm
 
 <f:view contentType="text/html">
 	<h:head>
+	
+	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
 		<link rel="shortcut icon" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/icons/favicon.ico" type="image/x-icon" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/scripts/nemo-utils.js" />
@@ -54,7 +58,8 @@ Released under a Creative Commons Attribution 3.0 Unported (https://creativecomm
 				<div id="menu">
 					<ul>
 						<li><a href="#{facesContext.externalContext.requestContextPath}/Despesas/list.faces"><img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/images/orgao.png" height="90" title="Por Orgao" alt="Por Orgao" /></a></li>
-						<li><a href="#"><img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/images/fornecedor.png" height="90" title="Por Fornecedor"  alt="Por Fornecedor" /></a></li>
+						<li><a href="#{facesContext.externalContext.requestContextPath}/Fornecedores/list.faces"><img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/images/fornecedor.png" height="90" title="Por Fornecedor"  alt="Por Fornecedor" /></a></li>
+						<li><a href="#{facesContext.externalContext.requestContextPath}/Investimentos/municipios.faces"><img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/images/municipio.png" height="90" title="Por Municipio"  alt="Por Municipio" /></a></li>
 						<li><a href="#{facesContext.externalContext.requestContextPath}/gerenciamento.faces"><img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/images/admin.png" height="90" title="Gerenciamento" alt="Gerenciamento" /></a></li>
 					</ul>
 				</div>
